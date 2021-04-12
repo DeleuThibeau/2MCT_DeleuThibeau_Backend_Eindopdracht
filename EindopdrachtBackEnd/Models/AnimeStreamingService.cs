@@ -8,5 +8,7 @@ namespace EindopdrachtBackEnd.Models
         
         public int StreamingServiceId { get; set; }
         public StreamingService StreamingService { get; set; }
+
+        
     }
 }

@@ -50,7 +50,6 @@ namespace EindopdrachtBackEnd
 
                 // REPOS
             services.AddTransient<IAnimeRepository,AnimeRepository>();
-            services.AddTransient<IDeviceRepository,DeviceRepository>();
             services.AddTransient<IGenreRepository,GenreRepository>();
             services.AddTransient<IStudioRepository,StudioRepository>();
             services.AddTransient<IStreamingServiceRepository,StreamingServiceRepository>();

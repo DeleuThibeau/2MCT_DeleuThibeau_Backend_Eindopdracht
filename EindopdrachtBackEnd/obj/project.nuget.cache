@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Ieu6cbhC+pcnlsBjagIM+Dofo/cIhjIxr6uAQjbXjNY267yzlEe/NNVGHD+vnRCpAK2J/c17HfGWfUXutvsdMA==",
+  "dgSpecHash": "4esPf2aXwqdGZ/aipzwXlfnjTBoPKLXYLD9JjJjJKOwKR+U1lsxeY/gczkwo7O7xyIWiI0M+Kp6wpTl86m16sw==",
   "success": true,
-  "projectFilePath": "c:\\Source\\EindopdrachtBackEnd\\EindopdrachtBackEnd.csproj",
+  "projectFilePath": "C:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\EindopdrachtBackEnd.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Gebruiker\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\Gebruiker\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",

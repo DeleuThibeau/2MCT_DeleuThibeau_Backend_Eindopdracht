@@ -48,17 +48,6 @@ namespace EindopdrachtBackEnd.Controllers
             }
         }
 
-        [HttpGet]
-        [Route("devices")]
-        public async Task<ActionResult<List<DeviceDTO>>> GetDevices()
-        {
-            try{
-                return new OkObjectResult(await _animeService.GetDevices());
-            }
-            catch(Exception ex){
-                return new StatusCodeResult(500);
-            }
-        }
 
         [HttpGet]
         [Route("streamingServices")]

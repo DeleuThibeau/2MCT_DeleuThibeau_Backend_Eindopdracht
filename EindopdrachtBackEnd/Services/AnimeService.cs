@@ -13,8 +13,6 @@ namespace EindopdrachtBackEnd.Services
         Task<AnimeDTO> AddAnime(AnimeDTO anime);
         Task<Anime> GetAnime(Guid animeId);
         Task<List<Anime>> GetAnimes();
-        Task<DeviceDTO> GetDevice(int deviceId);
-        Task<List<DeviceDTO>> GetDevices();
         Task<GenreDTO> GetGenre(int genreId);
         Task<List<GenreDTO>> GetGenres();
         Task<StreamingServiceDTO> GetStreamingService(int streamingServiceId);
@@ -26,17 +24,15 @@ namespace EindopdrachtBackEnd.Services
     public class AnimeService : IAnimeService
     {
         private IAnimeRepository _animeRepository;
-        private IDeviceRepository _deviceRepository;
         private IGenreRepository _genreRepository;
         private IStudioRepository _studioRepository;
         private IStreamingServiceRepository _streamingServiceRepository;
         private IMapper _mapper;
 
-        public AnimeService(IMapper mapper, IAnimeRepository animeRepository, IDeviceRepository deviceRepository, IGenreRepository genreRepository, IStudioRepository studioRepository, IStreamingServiceRepository streamingServiceRepository)
+        public AnimeService(IMapper mapper, IAnimeRepository animeRepository, IGenreRepository genreRepository, IStudioRepository studioRepository, IStreamingServiceRepository streamingServiceRepository)
         {
             _mapper = mapper;
             _animeRepository = animeRepository;
-            _deviceRepository = deviceRepository;
             _genreRepository = genreRepository;
             _studioRepository = studioRepository;
             _streamingServiceRepository = streamingServiceRepository;
@@ -92,17 +88,6 @@ namespace EindopdrachtBackEnd.Services
         public async Task<List<StreamingServiceDTO>> GetStreamingServices()
         {
             return _mapper.Map<List<StreamingServiceDTO>>(await _streamingServiceRepository.GetStreamingServices());
-        }
-
-        // GET DEVICE
-        public async Task<DeviceDTO> GetDevice(int deviceId)
-        {
-            return _mapper.Map<DeviceDTO>(await _deviceRepository.GetDevice(deviceId));
-        }
-
-        public async Task<List<DeviceDTO>> GetDevices()
-        {
-            return _mapper.Map<List<DeviceDTO>>(await _deviceRepository.GetDevices());
         }
 
         // ADD ANIME

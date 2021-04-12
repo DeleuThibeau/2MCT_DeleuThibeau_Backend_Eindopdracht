@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EindopdrachtBackEnd.Migrations
 {
     [DbContext(typeof(AnimeContext))]
-    [Migration("20210407114018_init")]
+    [Migration("20210412183254_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,7 +26,7 @@ namespace EindopdrachtBackEnd.Migrations
                     b.Property<Guid>("AnimeId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
-                        .HasDefaultValue(new Guid("b27b8b13-7b2f-4333-9d2f-d9927df25c4a"));
+                        .HasDefaultValue(new Guid("8ace434e-68c8-442d-a70f-900334aee803"));
 
                     b.Property<int>("GenreId")
                         .HasColumnType("int");
@@ -68,33 +68,6 @@ namespace EindopdrachtBackEnd.Migrations
                     b.HasIndex("StreamingServiceId");
 
                     b.ToTable("AnimeStreamingServices");
-                });
-
-            modelBuilder.Entity("EindopdrachtBackEnd.Models.Device", b =>
-                {
-                    b.Property<int>("DeviceId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("DeviceId");
-
-                    b.ToTable("Devices");
-
-                    b.HasData(
-                        new
-                        {
-                            DeviceId = 1,
-                            Name = "PC"
-                        },
-                        new
-                        {
-                            DeviceId = 2,
-                            Name = "TV"
-                        });
                 });
 
             modelBuilder.Entity("EindopdrachtBackEnd.Models.Genre", b =>
@@ -214,9 +187,6 @@ namespace EindopdrachtBackEnd.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("DeviceId")
-                        .HasColumnType("int");
-
                     b.Property<bool>("IsLegal")
                         .HasColumnType("bit");
 
@@ -224,8 +194,6 @@ namespace EindopdrachtBackEnd.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("StreamingServiceId");
-
-                    b.HasIndex("DeviceId");
 
                     b.ToTable("StreamingServices");
 
@@ -415,15 +383,6 @@ namespace EindopdrachtBackEnd.Migrations
                         .IsRequired();
 
                     b.Navigation("StreamingService");
-                });
-
-            modelBuilder.Entity("EindopdrachtBackEnd.Models.StreamingService", b =>
-                {
-                    b.HasOne("EindopdrachtBackEnd.Models.Device", "Device")
-                        .WithMany()
-                        .HasForeignKey("DeviceId");
-
-                    b.Navigation("Device");
                 });
 
             modelBuilder.Entity("EindopdrachtBackEnd.Models.Anime", b =>

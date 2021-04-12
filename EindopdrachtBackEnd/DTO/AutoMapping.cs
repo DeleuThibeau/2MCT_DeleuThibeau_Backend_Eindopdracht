@@ -8,7 +8,6 @@ namespace EindopdrachtBackEnd.DTO
     {
         public AutoMapping(){
             
-            CreateMap<Device,DeviceDTO>();
             CreateMap<Genre,GenreDTO>();
             CreateMap<StreamingService, StreamingServiceDTO>();
             CreateMap<Studio, StudioDTO>();

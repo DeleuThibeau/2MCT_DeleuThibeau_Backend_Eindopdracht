@@ -26,7 +26,7 @@ namespace EindopdrachtBackEnd.Repositories
 
         public async Task<List<Anime>> GetAnimes()
         {
-            return await _context.Animes.Include(s => s.AnimeStreamingServices).Include(s => s.Studio).Include(s => s.Genre).ToListAsync();
+            return await _context.Animes.ToListAsync();
         }
 
         public async Task<Anime> AddAnime(Anime anime)

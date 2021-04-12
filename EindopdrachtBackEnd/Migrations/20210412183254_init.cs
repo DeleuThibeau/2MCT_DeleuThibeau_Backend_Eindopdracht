@@ -8,19 +8,6 @@ namespace EindopdrachtBackEnd.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Devices",
-                columns: table => new
-                {
-                    DeviceId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Devices", x => x.DeviceId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Genres",
                 columns: table => new
                 {
@@ -32,6 +19,20 @@ namespace EindopdrachtBackEnd.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Genres", x => x.GenreId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "StreamingServices",
+                columns: table => new
+                {
+                    StreamingServiceId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsLegal = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_StreamingServices", x => x.StreamingServiceId);
                 });
 
             migrationBuilder.CreateTable(
@@ -48,31 +49,10 @@ namespace EindopdrachtBackEnd.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "StreamingServices",
-                columns: table => new
-                {
-                    StreamingServiceId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DeviceId = table.Column<int>(type: "int", nullable: true),
-                    IsLegal = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_StreamingServices", x => x.StreamingServiceId);
-                    table.ForeignKey(
-                        name: "FK_StreamingServices_Devices_DeviceId",
-                        column: x => x.DeviceId,
-                        principalTable: "Devices",
-                        principalColumn: "DeviceId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Animes",
                 columns: table => new
                 {
-                    AnimeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValue: new Guid("b27b8b13-7b2f-4333-9d2f-d9927df25c4a")),
+                    AnimeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValue: new Guid("8ace434e-68c8-442d-a70f-900334aee803")),
                     URLImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Synopsis = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -122,19 +102,11 @@ namespace EindopdrachtBackEnd.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Devices",
-                columns: new[] { "DeviceId", "Name" },
-                values: new object[,]
-                {
-                    { 1, "PC" },
-                    { 2, "TV" }
-                });
-
-            migrationBuilder.InsertData(
                 table: "Genres",
                 columns: new[] { "GenreId", "Description", "Name" },
                 values: new object[,]
                 {
+                    { 1, "An action story is similar to adventure, and the protagonist usually takes a risky turn, which leads to desperate situations (including explosions, fight scenes, daring escapes, etc.). Action and adventure are usually categorized together (sometimes even as 'action-adventure') because they have much in common, and many stories fall under both genres simultaneously (for instance, the James Bond series can be classified as both).", "Action" },
                     { 15, "For the more cultured/adult viewers among us (If you know what I mean ;-) )", "Hentai" },
                     { 14, "Watch a full grown person handle the difficulties in life", "Seinen" },
                     { 13, "Watch a young man grow to a hero!", "Shounen" },
@@ -142,28 +114,27 @@ namespace EindopdrachtBackEnd.Migrations
                     { 11, "A lot of robots GUUUUUUUUUUNDAAAAAAAAAAAM", "Mecha" },
                     { 10, "Science fiction (once known as scientific romance) is similar to fantasy, except stories in this genre use scientific understanding to explain the universe that it takes place in. It generally includes or is centered on the presumed effects or ramifications of computers or machines; travel through space, time or alternate universes; alien life-forms; genetic engineering; or other such things. The science or technology used may or may not be very thoroughly elaborated on.", "Sci-fi" },
                     { 9, "As the name says, watch a slice of someone's life  (it's wholesome, trust me) ", "Slice of life" },
-                    { 8, "A horror story is told to deliberately scare or frighten the audience, through suspense, violence or shock. H. P. Lovecraft distinguishes two primary varieties in the 'Introduction' to Supernatural Horror in Literature: 1. Physical Fear or the 'mundanely gruesome' and 2. the true Supernatural Horror story or the 'Weird Tale.' The supernatural variety is occasionally called 'dark fantas',' since the laws of nature must be violated in some way, thus qualifying the story as 'fantastic.'", "Horror" },
                     { 7, "A thriller is a story that is usually a mix of fear and excitement. It has traits from the suspense genre and often from the action, adventure or mystery genres, but the level of terror makes it borderline horror fiction at times as well. It generally has a dark or serious theme, which also makes it similar to drama.", "Thriller" },
                     { 6, "In literature, psychological fiction (also psychological realism) is a narrative genre that emphasizes interior characterization and motivation to explore the spiritual, emotional, and mental lives of the characters.", "Psychological" },
                     { 5, "A fantasy story is about magic or supernatural forces, as opposed to technology as seen in science fiction. Depending on the extent of these other elements, the story may or may not be considered to be a 'hybrid genre' series; for instance, even though the Harry Potter series canon includes the requirement of a particular gene to be a wizard, it is referred to only as a fantasy series.", "Fantasy" },
                     { 4, "Most often, however, a romance is understood to be 'love stories', emotion-driven stories that are primarily focused on the relationship between the main characters of the story. Beyond the focus on the relationship, the biggest defining characteristic of the romance genre is that a happy ending is always guaranteed,[10][11] perhaps marriage and living 'happily ever after,' or simply that the reader sees hope for the future of the romantic relationship", "Romance" },
                     { 3, "Comedy is a story that tells about a series of funny, or comical events, intended to make the audience laugh. It is a very open genre, and thus crosses over with many other genres on a frequent basics.", "Comedy" },
                     { 2, "Drama is a mode of fictional representation through dialogue and performance. It is one of the literary genres, which is an imitation of some action. Drama is also a type of a play written for theater, television, radio, and film.", "Drama" },
-                    { 1, "An action story is similar to adventure, and the protagonist usually takes a risky turn, which leads to desperate situations (including explosions, fight scenes, daring escapes, etc.). Action and adventure are usually categorized together (sometimes even as 'action-adventure') because they have much in common, and many stories fall under both genres simultaneously (for instance, the James Bond series can be classified as both).", "Action" }
+                    { 8, "A horror story is told to deliberately scare or frighten the audience, through suspense, violence or shock. H. P. Lovecraft distinguishes two primary varieties in the 'Introduction' to Supernatural Horror in Literature: 1. Physical Fear or the 'mundanely gruesome' and 2. the true Supernatural Horror story or the 'Weird Tale.' The supernatural variety is occasionally called 'dark fantas',' since the laws of nature must be violated in some way, thus qualifying the story as 'fantastic.'", "Horror" }
                 });
 
             migrationBuilder.InsertData(
                 table: "StreamingServices",
-                columns: new[] { "StreamingServiceId", "DeviceId", "IsLegal", "Name" },
+                columns: new[] { "StreamingServiceId", "IsLegal", "Name" },
                 values: new object[,]
                 {
-                    { 7, null, false, "GogoAnime" },
-                    { 6, null, false, "KissAnime" },
-                    { 5, null, true, "Hulu" },
-                    { 4, null, true, "Funimation" },
-                    { 3, null, true, "Crunchyroll" },
-                    { 2, null, true, "Amazon" },
-                    { 1, null, true, "Netflix" }
+                    { 6, false, "KissAnime" },
+                    { 7, false, "GogoAnime" },
+                    { 4, true, "Funimation" },
+                    { 5, true, "Hulu" },
+                    { 2, true, "Amazon" },
+                    { 1, true, "Netflix" },
+                    { 3, true, "Crunchyroll" }
                 });
 
             migrationBuilder.InsertData(
@@ -171,6 +142,7 @@ namespace EindopdrachtBackEnd.Migrations
                 columns: new[] { "StudioId", "Name" },
                 values: new object[,]
                 {
+                    { 17, "Studio Deen" },
                     { 16, "Kyoto animation" },
                     { 15, "Brian's Base" },
                     { 14, "Shaft" },
@@ -178,7 +150,6 @@ namespace EindopdrachtBackEnd.Migrations
                     { 12, "Trigger" },
                     { 11, "J.C Staff" },
                     { 10, "Toei Animation" },
-                    { 9, "Studio Pierrot" },
                     { 8, "Production I.G" },
                     { 7, "Studio Sunrise" },
                     { 6, "A-1 Pictures" },
@@ -187,7 +158,7 @@ namespace EindopdrachtBackEnd.Migrations
                     { 3, "Wit" },
                     { 2, "Bones" },
                     { 1, "Madhouse" },
-                    { 17, "Studio Deen" },
+                    { 9, "Studio Pierrot" },
                     { 18, "white fox" }
                 });
 
@@ -205,11 +176,6 @@ namespace EindopdrachtBackEnd.Migrations
                 name: "IX_AnimeStreamingServices_StreamingServiceId",
                 table: "AnimeStreamingServices",
                 column: "StreamingServiceId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_StreamingServices_DeviceId",
-                table: "StreamingServices",
-                column: "DeviceId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -228,9 +194,6 @@ namespace EindopdrachtBackEnd.Migrations
 
             migrationBuilder.DropTable(
                 name: "Studios");
-
-            migrationBuilder.DropTable(
-                name: "Devices");
         }
     }
 }

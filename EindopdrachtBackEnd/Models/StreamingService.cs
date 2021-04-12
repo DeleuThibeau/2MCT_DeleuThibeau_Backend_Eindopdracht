@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace EindopdrachtBackEnd.Models
 {
@@ -6,8 +7,7 @@ namespace EindopdrachtBackEnd.Models
     {
         public int StreamingServiceId { get; set; }
         public string Name { get; set; }
-        public Device Device { get; set; }
-
         public bool IsLegal { get; set; }
+
     }
 }

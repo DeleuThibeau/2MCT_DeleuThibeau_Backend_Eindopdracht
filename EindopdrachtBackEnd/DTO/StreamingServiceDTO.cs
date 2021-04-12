@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace EindopdrachtBackEnd.DTO
 {
@@ -7,5 +8,6 @@ namespace EindopdrachtBackEnd.DTO
         public int StreamingServiceId { get; set; }
         public string Name { get; set; }
         public bool IsLegal { get; set; }
+        public List<int> DeviceStreamingServices { get; set; }
     }
 }

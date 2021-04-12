@@ -6055,11 +6055,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Source\\EindopdrachtBackEnd\\EindopdrachtBackEnd.csproj",
+      "projectUniqueName": "c:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\EindopdrachtBackEnd.csproj",
       "projectName": "EindopdrachtBackEnd",
-      "projectPath": "C:\\Source\\EindopdrachtBackEnd\\EindopdrachtBackEnd.csproj",
+      "projectPath": "c:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\EindopdrachtBackEnd.csproj",
       "packagesPath": "C:\\Users\\Gebruiker\\.nuget\\packages\\",
-      "outputPath": "C:\\Source\\EindopdrachtBackEnd\\obj\\",
+      "outputPath": "c:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

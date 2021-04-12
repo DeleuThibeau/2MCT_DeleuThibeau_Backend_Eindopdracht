@@ -16,7 +16,6 @@ namespace EindopdrachtBackEnd.Data
         DbSet<StreamingService> StreamingServices { get; set; }
         DbSet<AnimeStreamingService> AnimeStreamingServices { get; set; }
         DbSet<Genre> Genres { get; set; }
-        DbSet<Device> Devices { get; set; }
         DbSet<Studio> Studios { get; set; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
@@ -27,7 +26,6 @@ namespace EindopdrachtBackEnd.Data
         public DbSet<StreamingService> StreamingServices { get; set; }
         public DbSet<AnimeStreamingService> AnimeStreamingServices { get; set; }
         public DbSet<Genre> Genres { get; set; }
-        public DbSet<Device> Devices { get; set; }
         public DbSet<Studio> Studios { get; set; }
 
         private ConnectionStrings _connectionstrings;
@@ -47,9 +45,6 @@ namespace EindopdrachtBackEnd.Data
         {
             modelBuilder.Entity<AnimeStreamingService>()
                    .HasKey(cs => new { cs.AnimeId, cs.StreamingServiceId });
-
-            modelBuilder.Entity<Device>().HasData(new Device() { DeviceId = 1, Name = "PC" });
-            modelBuilder.Entity<Device>().HasData(new Device() { DeviceId = 2, Name = "TV" });
 
             modelBuilder.Entity<Genre>().HasData(new Genre() { GenreId = 1, Name = "Action", Description = "An action story is similar to adventure, and the protagonist usually takes a risky turn, which leads to desperate situations (including explosions, fight scenes, daring escapes, etc.). Action and adventure are usually categorized together (sometimes even as 'action-adventure') because they have much in common, and many stories fall under both genres simultaneously (for instance, the James Bond series can be classified as both)." });
             modelBuilder.Entity<Genre>().HasData(new Genre() { GenreId = 2, Name = "Drama", Description = "Drama is a mode of fictional representation through dialogue and performance. It is one of the literary genres, which is an imitation of some action. Drama is also a type of a play written for theater, television, radio, and film." });
