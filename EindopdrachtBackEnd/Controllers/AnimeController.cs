@@ -78,19 +78,6 @@ namespace EindopdrachtBackEnd.Controllers
         }
 
 
-        [HttpGet]
-        [Route("animes")]
-        [MapToApiVersion("2.0")]
-        public async Task<ActionResult<List<AnimeDTO>>> GetAnimes()
-        {
-            try{
-                return new OkObjectResult(await _animeService.GetAnimes());
-            }
-            catch(Exception ex){
-                return new StatusCodeResult(500);
-            }
-        }
-
 
         [HttpGet]
         [Route("anime/{animeId}")]
