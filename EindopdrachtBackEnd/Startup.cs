@@ -40,8 +40,9 @@ namespace EindopdrachtBackEnd
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "EindopdrachtBackEnd", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "AnimeAPi", Version = "v1" });
             });
+            
 
             //INTERFACCES
 
@@ -65,9 +66,10 @@ namespace EindopdrachtBackEnd
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "EindopdrachtBackEnd v1"));
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "AnimeAPi v1"));
 
             app.UseHttpsRedirection();
 

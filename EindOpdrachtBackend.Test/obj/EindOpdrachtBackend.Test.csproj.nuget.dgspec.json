@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindOpdrachtBackend.Test\\EindOpdrachtBackend.Test.csproj": {}
+    "c:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindOpdrachtBackend.Test\\EindOpdrachtBackend.Test.csproj": {}
   },
   "projects": {
-    "C:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindOpdrachtBackend.Test\\EindOpdrachtBackend.Test.csproj": {
+    "c:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindOpdrachtBackend.Test\\EindOpdrachtBackend.Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindOpdrachtBackend.Test\\EindOpdrachtBackend.Test.csproj",
+        "projectUniqueName": "c:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindOpdrachtBackend.Test\\EindOpdrachtBackend.Test.csproj",
         "projectName": "EindOpdrachtBackend.Test",
-        "projectPath": "C:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindOpdrachtBackend.Test\\EindOpdrachtBackend.Test.csproj",
+        "projectPath": "c:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindOpdrachtBackend.Test\\EindOpdrachtBackend.Test.csproj",
         "packagesPath": "C:\\Users\\Gebruiker\\.nuget\\packages\\",
-        "outputPath": "C:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindOpdrachtBackend.Test\\obj\\",
+        "outputPath": "c:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindOpdrachtBackend.Test\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -34,8 +34,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\EindopdrachtBackEnd.csproj": {
-                "projectPath": "C:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\EindopdrachtBackEnd.csproj"
+              "c:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\EindopdrachtBackEnd.csproj": {
+                "projectPath": "c:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\EindopdrachtBackEnd.csproj"
               }
             }
           }
@@ -94,18 +94,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\EindopdrachtBackEnd.csproj": {
+    "c:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\EindopdrachtBackEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\EindopdrachtBackEnd.csproj",
+        "projectUniqueName": "c:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\EindopdrachtBackEnd.csproj",
         "projectName": "EindopdrachtBackEnd",
-        "projectPath": "C:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\EindopdrachtBackEnd.csproj",
+        "projectPath": "c:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\EindopdrachtBackEnd.csproj",
         "packagesPath": "C:\\Users\\Gebruiker\\.nuget\\packages\\",
-        "outputPath": "C:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\obj\\",
+        "outputPath": "c:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -185,7 +185,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

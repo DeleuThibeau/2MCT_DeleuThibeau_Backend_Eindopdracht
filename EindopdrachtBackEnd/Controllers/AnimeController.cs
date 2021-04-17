@@ -6,11 +6,14 @@ using EindopdrachtBackEnd.Models;
 using EindopdrachtBackEnd.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Mvc.Versioning;
 
 namespace EindopdrachtBackEnd.Controllers
 {
     [ApiController]
     [Route("api")]
+    [ApiVersion("1.0")]
+    [ApiVersion("2.0")]
     public class AnimeController: ControllerBase
     {
         private readonly IAnimeService _animeService;
@@ -63,6 +66,21 @@ namespace EindopdrachtBackEnd.Controllers
 
         [HttpGet]
         [Route("animes")]
+        [MapToApiVersion("1.0")]
+        public async Task<ActionResult<List<AnimeDTO>>> GetAnimes()
+        {
+            try{
+                return new OkObjectResult(await _animeService.GetAnimes());
+            }
+            catch(Exception ex){
+                return new StatusCodeResult(500);
+            }
+        }
+
+
+        [HttpGet]
+        [Route("animes")]
+        [MapToApiVersion("2.0")]
         public async Task<ActionResult<List<AnimeDTO>>> GetAnimes()
         {
             try{
