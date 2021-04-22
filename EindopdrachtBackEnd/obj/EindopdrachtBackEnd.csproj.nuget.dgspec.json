@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\EindopdrachtBackEnd.csproj": {}
+    "C:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\EindopdrachtBackEnd.csproj": {}
   },
   "projects": {
-    "c:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\EindopdrachtBackEnd.csproj": {
+    "C:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\EindopdrachtBackEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\EindopdrachtBackEnd.csproj",
+        "projectUniqueName": "C:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\EindopdrachtBackEnd.csproj",
         "projectName": "EindopdrachtBackEnd",
-        "projectPath": "c:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\EindopdrachtBackEnd.csproj",
+        "projectPath": "C:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\EindopdrachtBackEnd.csproj",
         "packagesPath": "C:\\Users\\Gebruiker\\.nuget\\packages\\",
-        "outputPath": "c:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\obj\\",
+        "outputPath": "C:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -53,6 +53,10 @@
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[8.1.1, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[5.0.5, )"
             },
             "Microsoft.AspnetCore.Mvc.Versioning": {
               "target": "Package",

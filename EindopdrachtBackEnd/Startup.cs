@@ -6,6 +6,7 @@ using EindopdrachtBackEnd.Configuration;
 using EindopdrachtBackEnd.Data;
 using EindopdrachtBackEnd.Repositories;
 using EindopdrachtBackEnd.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -38,6 +39,14 @@ namespace EindopdrachtBackEnd
             services.AddDbContext<AnimeContext>();
             // CONTROLLERS
             services.AddControllers();
+            // AUTHENTICATION
+            services.AddAuthentication(options => {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options => {
+                options.Authority = "https://dev-xfqsdz8z.eu.auth0.com";
+                options.Audience = "http://animeAPI";
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AnimeAPi", Version = "v1" });
@@ -75,6 +84,7 @@ namespace EindopdrachtBackEnd
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

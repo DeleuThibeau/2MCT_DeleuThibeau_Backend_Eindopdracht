@@ -7,9 +7,11 @@ using EindopdrachtBackEnd.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Mvc.Versioning;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EindopdrachtBackEnd.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api")]
     [ApiVersion("1.0")]

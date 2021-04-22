@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindOpdrachtBackend.Test\\EindOpdrachtBackend.Test.csproj": {}
+    "C:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindOpdrachtBackend.Test\\EindOpdrachtBackend.Test.csproj": {}
   },
   "projects": {
-    "c:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindOpdrachtBackend.Test\\EindOpdrachtBackend.Test.csproj": {
+    "C:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindOpdrachtBackend.Test\\EindOpdrachtBackend.Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindOpdrachtBackend.Test\\EindOpdrachtBackend.Test.csproj",
+        "projectUniqueName": "C:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindOpdrachtBackend.Test\\EindOpdrachtBackend.Test.csproj",
         "projectName": "EindOpdrachtBackend.Test",
-        "projectPath": "c:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindOpdrachtBackend.Test\\EindOpdrachtBackend.Test.csproj",
+        "projectPath": "C:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindOpdrachtBackend.Test\\EindOpdrachtBackend.Test.csproj",
         "packagesPath": "C:\\Users\\Gebruiker\\.nuget\\packages\\",
-        "outputPath": "c:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindOpdrachtBackend.Test\\obj\\",
+        "outputPath": "C:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindOpdrachtBackend.Test\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -34,8 +34,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "c:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\EindopdrachtBackEnd.csproj": {
-                "projectPath": "c:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\EindopdrachtBackEnd.csproj"
+              "C:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\EindopdrachtBackEnd.csproj": {
+                "projectPath": "C:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\EindopdrachtBackEnd.csproj"
               }
             }
           }
@@ -61,6 +61,10 @@
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[16.7.1, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.1.2, )"
             },
             "coverlet.collector": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -98,14 +102,14 @@
         }
       }
     },
-    "c:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\EindopdrachtBackEnd.csproj": {
+    "C:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\EindopdrachtBackEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\EindopdrachtBackEnd.csproj",
+        "projectUniqueName": "C:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\EindopdrachtBackEnd.csproj",
         "projectName": "EindopdrachtBackEnd",
-        "projectPath": "c:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\EindopdrachtBackEnd.csproj",
+        "projectPath": "C:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\EindopdrachtBackEnd.csproj",
         "packagesPath": "C:\\Users\\Gebruiker\\.nuget\\packages\\",
-        "outputPath": "c:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\obj\\",
+        "outputPath": "C:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -148,6 +152,10 @@
               "target": "Package",
               "version": "[8.1.1, )"
             },
+            "Microsoft.AspnetCore.Mvc.Versioning": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.4, )"
@@ -164,7 +172,7 @@
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[5.6.3, )"
+              "version": "[6.1.2, )"
             }
           },
           "imports": [

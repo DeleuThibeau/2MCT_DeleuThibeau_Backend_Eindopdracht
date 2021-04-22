@@ -10,7 +10,7 @@
 using System;
 using System.Reflection;
 
-[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("EindopdrachtBackEnd, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "c:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd", "EindopdrachtBackEnd.csproj", "0")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("EindopdrachtBackEnd, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Source\\2MCT_DeleuThibeau_Backend_Eindopdracht\\EindopdrachtBackEnd", "EindopdrachtBackEnd.csproj", "0")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("EindOpdrachtBackend.Test")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
