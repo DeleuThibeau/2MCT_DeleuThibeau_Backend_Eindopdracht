@@ -50,7 +50,9 @@ namespace EindopdrachtBackEnd
             });
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "AnimeAPi", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "AnimeApi", Version = "v1" });
+                c.SwaggerDoc("v2", new OpenApiInfo { Title = "RecommendationApi", Version = "v1" });
+                c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
             });
 
             services.AddApiVersioning(config =>
@@ -89,7 +91,11 @@ namespace EindopdrachtBackEnd
             }
 
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "AnimeAPi v1"));
+            app.UseSwaggerUI(c => 
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "AnimeApi v1");
+
+            });
 
             app.UseHttpsRedirection();
 
