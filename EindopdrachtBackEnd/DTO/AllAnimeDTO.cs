@@ -11,8 +11,5 @@ namespace EindopdrachtBackEnd.DTO
         public string Synopsis { get; set; }
         public int Rating { get; set; }
 
-        public int StudioId { get; set; }
-        public int GenreId { get; set; }
-
     }
 }

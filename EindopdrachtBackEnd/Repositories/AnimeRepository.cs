@@ -12,7 +12,8 @@ namespace EindopdrachtBackEnd.Repositories
     {
         Task<Anime> AddAnime(Anime anime);
         Task DeleteAnime(string name);
-        Task<Anime> GetAnime(Guid animeId);
+        Task<Anime> GetAnimeById(Guid animeId);
+        Task<Anime> GetAnimeByName(string animeName);
         Task<List<Anime>> GetAnimes();
         Task<List<Anime>> UpdateAnime(string name, string update);
     }
@@ -38,9 +39,19 @@ namespace EindopdrachtBackEnd.Repositories
             return anime;
         }
 
-        public async Task<Anime> GetAnime(Guid animeId)
+        public async Task<Anime> GetAnimeById(Guid animeId)
         {
             return await _context.Animes.Where(s => s.AnimeId == animeId)
+            .Include(s => s.Genre)
+            .Include(s => s.Studio)
+            .Include(s => s.AnimeStreamingServices)
+            .ThenInclude(s => s.StreamingService).SingleOrDefaultAsync();
+        }
+
+
+        public async Task<Anime> GetAnimeByName(string animeName)
+        {
+            return await _context.Animes.Where(s => s.Name == animeName)
             .Include(s => s.Genre)
             .Include(s => s.Studio)
             .Include(s => s.AnimeStreamingServices)

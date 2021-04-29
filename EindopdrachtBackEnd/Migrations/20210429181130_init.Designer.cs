@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EindopdrachtBackEnd.Migrations
 {
     [DbContext(typeof(AnimeContext))]
-    [Migration("20210428081327_init")]
+    [Migration("20210429181130_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,7 +26,7 @@ namespace EindopdrachtBackEnd.Migrations
                     b.Property<Guid>("AnimeId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
-                        .HasDefaultValue(new Guid("d1100c39-1136-4d62-859a-a8b27ebadd28"));
+                        .HasDefaultValue(new Guid("6b08bd42-e873-4bde-8382-1cee936264ba"));
 
                     b.Property<int>("GenreId")
                         .HasColumnType("int");

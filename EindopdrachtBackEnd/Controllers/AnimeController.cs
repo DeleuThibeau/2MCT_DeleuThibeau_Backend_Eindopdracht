@@ -92,11 +92,23 @@ namespace EindopdrachtBackEnd.Controllers
         }
 
         [HttpGet]
-        [Route("anime/{animeId}")]
+        [Route("anime/Id/{animeId}")]
         public async Task<ActionResult<List<AnimeDTO>>> GetAnimeById(Guid animeId)
         {
             try{
-                return new OkObjectResult(await _animeService.GetAnime(animeId));
+                return new OkObjectResult(await _animeService.GetAnimeById(animeId));
+            }
+            catch(Exception ex){
+                return new StatusCodeResult(500);
+            }
+        }
+
+        [HttpGet]
+        [Route("anime/name/{animeName}")]
+        public async Task<ActionResult<List<AnimeDTO>>> GetAnimeByName(string animeName)
+        {
+            try{
+                return new OkObjectResult(await _animeService.GetAnimeByName(animeName));
             }
             catch(Exception ex){
                 return new StatusCodeResult(500);
@@ -126,7 +138,7 @@ namespace EindopdrachtBackEnd.Controllers
         
         [HttpPost]
         [Route("anime")]
-        public async Task<ActionResult<AnimeDTO>> AddSneaker(AnimeDTO anime)
+        public async Task<ActionResult<AnimeDTO>> AddAnime(AnimeDTO anime)
         {
             try{
                 return new OkObjectResult(await _animeService.AddAnime(anime));
@@ -173,8 +185,7 @@ namespace EindopdrachtBackEnd.Controllers
         public async Task<ActionResult<string>> DeleteAnime(string anime)
         {
             try{
-                await _animeService.DeleteAnime(anime);
-                return new OkObjectResult("The Anime has been deleted!");
+                return new OkObjectResult(await _animeService.DeleteAnime(anime));
             }
             catch(Exception ex){
                 return new StatusCodeResult(500);

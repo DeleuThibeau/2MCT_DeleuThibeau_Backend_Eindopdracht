@@ -6,6 +6,7 @@ namespace EindopdrachtBackEnd.DTO
 {
     public class AnimeDTO
     {
+        public Guid AnimeId {get; set;}
         public string URLImage { get; set; }
         public string Name { get; set; }
         public string Synopsis { get; set; }

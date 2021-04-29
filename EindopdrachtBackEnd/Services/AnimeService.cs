@@ -11,9 +11,10 @@ namespace EindopdrachtBackEnd.Services
     public interface IAnimeService
     {
         Task<AnimeDTO> AddAnime(AnimeDTO anime);
-        Task DeleteAnime(string name);
+        Task<string> DeleteAnime(string name);
         Task DeleteStudio(int studioId);
-        Task<Anime> GetAnime(Guid animeId);
+        Task<Anime> GetAnimeById(Guid animeId);
+        Task<Anime> GetAnimeByName(string animeName);
         Task<List<AnimeDTO>> GetAnimesV1();
         Task<List<AllAnimeDTO>> GetAnimesV2();
         Task<GenreDTO> GetGenre(int genreId);
@@ -22,7 +23,7 @@ namespace EindopdrachtBackEnd.Services
         Task<List<StreamingServiceDTO>> GetStreamingServices();
         Task<StudioDTO> GetStudio(int studioId);
         Task<List<StudioDTO>> GetStudios();
-        Task<List<Anime>> UpdateAnime(string anime, string update);
+        Task<List<AllAnimeDTO>> UpdateAnime(string anime, string update);
         Task<Studio> UpdateStudio(int studioId, string update);
     }
 
@@ -44,11 +45,24 @@ namespace EindopdrachtBackEnd.Services
         }
 
         // GET ANIME
-        public async Task<Anime> GetAnime(Guid animeId)
+        public async Task<Anime> GetAnimeById(Guid animeId)
         {
             try
             {
-                return await _animeRepository.GetAnime(animeId);
+                return await _animeRepository.GetAnimeById(animeId);
+            }
+            catch (System.Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public async Task<Anime> GetAnimeByName(string animeName)
+        {
+            try
+            {
+                return await _animeRepository.GetAnimeByName(animeName);
             }
             catch (System.Exception ex)
             {
@@ -105,6 +119,10 @@ namespace EindopdrachtBackEnd.Services
         {
             try
             {
+                Anime checkIfExists = await _animeRepository.GetAnimeByName(anime.Name);
+                if (checkIfExists != null)
+                    return null;
+
                 Anime newAnime = _mapper.Map<Anime>(anime);
                 newAnime.AnimeId = new Guid();
                 newAnime.AnimeStreamingServices = new List<AnimeStreamingService>();
@@ -148,11 +166,17 @@ namespace EindopdrachtBackEnd.Services
             }
         }
 
-        public async Task DeleteAnime(string name)
+        public async Task<string> DeleteAnime(string name)
         {
             try
             {
+                Anime checkIfExists = await _animeRepository.GetAnimeByName(name);
+                if (checkIfExists == null)
+                    return "The record doesn't exist!";
+
                 await _animeRepository.DeleteAnime(name);
+
+                return name;
             }
             catch (System.Exception ex)
             {
@@ -160,11 +184,11 @@ namespace EindopdrachtBackEnd.Services
             }
         }
 
-        public async Task<List<Anime>> UpdateAnime(string anime, string update)
+        public async Task<List<AllAnimeDTO>> UpdateAnime(string anime, string update)
         {
             try
             {
-                return await _animeRepository.UpdateAnime(anime, update);
+                return _mapper.Map<List<AllAnimeDTO>>(await _animeRepository.UpdateAnime(anime, update));
             }
             catch (System.Exception ex)
             {
