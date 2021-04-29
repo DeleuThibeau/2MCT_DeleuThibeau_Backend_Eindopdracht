@@ -24,7 +24,7 @@ namespace EindopdrachtBackEnd.Migrations
                     b.Property<Guid>("AnimeId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
-                        .HasDefaultValue(new Guid("8ace434e-68c8-442d-a70f-900334aee803"));
+                        .HasDefaultValue(new Guid("d1100c39-1136-4d62-859a-a8b27ebadd28"));
 
                     b.Property<int>("GenreId")
                         .HasColumnType("int");

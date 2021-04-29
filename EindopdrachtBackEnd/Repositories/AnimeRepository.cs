@@ -11,8 +11,10 @@ namespace EindopdrachtBackEnd.Repositories
     public interface IAnimeRepository
     {
         Task<Anime> AddAnime(Anime anime);
+        Task DeleteAnime(string name);
         Task<Anime> GetAnime(Guid animeId);
         Task<List<Anime>> GetAnimes();
+        Task<List<Anime>> UpdateAnime(string name, string update);
     }
 
     public class AnimeRepository : IAnimeRepository
@@ -43,6 +45,32 @@ namespace EindopdrachtBackEnd.Repositories
             .Include(s => s.Studio)
             .Include(s => s.AnimeStreamingServices)
             .ThenInclude(s => s.StreamingService).SingleOrDefaultAsync();
+        }
+
+        public async Task DeleteAnime(string name)
+        {
+            var dep = _context.Animes.Where(o => o.Name == name).ToList();
+
+            foreach (Anime anime in dep)
+            {
+                _context.Animes.Remove(anime);
+
+            }
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<List<Anime>> UpdateAnime(string name, string update)
+        {
+            var animes = _context.Animes.Where(o => o.Name == name).ToList();
+
+            foreach (Anime anime in animes)
+            {
+                anime.Name = update;
+            }
+
+            await _context.SaveChangesAsync();
+
+            return animes;
         }
 
     }

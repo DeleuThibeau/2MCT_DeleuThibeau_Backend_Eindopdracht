@@ -12,6 +12,7 @@ namespace EindopdrachtBackEnd.DTO
             CreateMap<StreamingService, StreamingServiceDTO>();
             CreateMap<Studio, StudioDTO>();
             CreateMap<Anime, AnimeDTO>();
+            CreateMap<Anime, AllAnimeDTO>();
             CreateMap<AnimeDTO, Anime>().ForMember(x => x.AnimeStreamingServices,opt => opt.Ignore());
 
         }

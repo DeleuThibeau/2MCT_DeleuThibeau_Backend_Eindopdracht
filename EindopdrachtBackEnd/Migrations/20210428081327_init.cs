@@ -52,7 +52,7 @@ namespace EindopdrachtBackEnd.Migrations
                 name: "Animes",
                 columns: table => new
                 {
-                    AnimeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValue: new Guid("8ace434e-68c8-442d-a70f-900334aee803")),
+                    AnimeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false, defaultValue: new Guid("d1100c39-1136-4d62-859a-a8b27ebadd28")),
                     URLImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Synopsis = table.Column<string>(type: "nvarchar(max)", nullable: true),

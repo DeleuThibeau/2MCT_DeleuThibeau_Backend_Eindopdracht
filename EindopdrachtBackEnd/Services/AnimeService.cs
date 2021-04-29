@@ -11,14 +11,19 @@ namespace EindopdrachtBackEnd.Services
     public interface IAnimeService
     {
         Task<AnimeDTO> AddAnime(AnimeDTO anime);
+        Task DeleteAnime(string name);
+        Task DeleteStudio(int studioId);
         Task<Anime> GetAnime(Guid animeId);
-        Task<List<Anime>> GetAnimes();
+        Task<List<AnimeDTO>> GetAnimesV1();
+        Task<List<AllAnimeDTO>> GetAnimesV2();
         Task<GenreDTO> GetGenre(int genreId);
         Task<List<GenreDTO>> GetGenres();
         Task<StreamingServiceDTO> GetStreamingService(int streamingServiceId);
         Task<List<StreamingServiceDTO>> GetStreamingServices();
         Task<StudioDTO> GetStudio(int studioId);
         Task<List<StudioDTO>> GetStudios();
+        Task<List<Anime>> UpdateAnime(string anime, string update);
+        Task<Studio> UpdateStudio(int studioId, string update);
     }
 
     public class AnimeService : IAnimeService
@@ -52,9 +57,14 @@ namespace EindopdrachtBackEnd.Services
             }
         }
 
-        public async Task<List<Anime>> GetAnimes()
+        public async Task<List<AllAnimeDTO>> GetAnimesV2()
         {
-            return await _animeRepository.GetAnimes();
+            return _mapper.Map<List<AllAnimeDTO>>(await _animeRepository.GetAnimes());
+        }
+
+        public async Task<List<AnimeDTO>> GetAnimesV1()
+        {
+            return _mapper.Map<List<AnimeDTO>>(await _animeRepository.GetAnimes());
         }
 
         // GET GENRES
@@ -107,10 +117,60 @@ namespace EindopdrachtBackEnd.Services
             }
             catch (System.Exception ex)
             {
-
                 throw ex;
             }
         }
 
+
+        // DELETE STUDIO
+
+        public async Task DeleteStudio(int studioId)
+        {
+            try
+            {
+                await _studioRepository.DeleteStudio(studioId);
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<Studio> UpdateStudio(int studioId, string update)
+        {
+            try
+            {
+                return await _studioRepository.UpdateStudio(studioId, update);
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task DeleteAnime(string name)
+        {
+            try
+            {
+                await _animeRepository.DeleteAnime(name);
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<List<Anime>> UpdateAnime(string anime, string update)
+        {
+            try
+            {
+                return await _animeRepository.UpdateAnime(anime, update);
+            }
+            catch (System.Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

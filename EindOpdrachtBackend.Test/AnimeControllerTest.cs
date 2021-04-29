@@ -76,7 +76,7 @@ namespace EindOpdrachtBackend.Test
         [Fact]
         public async Task Get_One_Anime_Should_Return_Ok()
         {
-            var response = await Client.GetAsync("/api/anime/94aae863-d00f-4bfc-07bf-08d8fde1b6a4");
+            var response = await Client.GetAsync("/api/anime/4e0958ef-84c6-4005-947b-08d90a1db170");
             response.StatusCode.Should().Be(HttpStatusCode.OK);
         }
 
@@ -104,5 +104,24 @@ namespace EindOpdrachtBackend.Test
             Assert.Equal<string>("Steins Gate", createdAnime.Name);
  
         }
+    
+        [Fact]
+        public async Task Delete_One_Anime_Should_Return_Ok()
+        {
+            var response = await Client.DeleteAsync("/api/anime/Steins Gate");
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+        }
+
+        [Fact]
+        public async Task Update_One_Anime_Should_Return_Ok()
+        {
+            var update ="TEST ONE PUUUUNCH MAN!!!";
+            var response = await Client.PutAsync("/api/anime/OP!/One Punch Man!", 
+            new StringContent(update));
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+        
+        }
+    
+    
     }
 }

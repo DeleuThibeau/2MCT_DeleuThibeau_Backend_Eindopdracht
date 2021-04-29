@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace EindopdrachtBackEnd.Controllers
 {
-    [Authorize]
+    // [Authorize]
     [ApiController]
     [Route("api")]
     [ApiVersion("1.0")]
@@ -53,7 +53,6 @@ namespace EindopdrachtBackEnd.Controllers
             }
         }
 
-
         [HttpGet]
         [Route("streamingServices")]
         public async Task<ActionResult<List<StreamingServiceDTO>>> GetStreamingServices()
@@ -69,17 +68,28 @@ namespace EindopdrachtBackEnd.Controllers
         [HttpGet]
         [Route("animes")]
         [MapToApiVersion("1.0")]
-        public async Task<ActionResult<List<AnimeDTO>>> GetAnimes()
+        public async Task<ActionResult<List<Anime>>> GetAnimesV1()
         {
             try{
-                return new OkObjectResult(await _animeService.GetAnimes());
+                return new OkObjectResult(await _animeService.GetAnimesV1());
             }
             catch(Exception ex){
                 return new StatusCodeResult(500);
             }
         }
 
-
+        [HttpGet]
+        [Route("animes")]
+        [MapToApiVersion("2.0")]
+        public async Task<ActionResult<List<AllAnimeDTO>>> GetAnimesV2()
+        {
+            try{
+                return new OkObjectResult(await _animeService.GetAnimesV2());
+            }
+            catch(Exception ex){
+                return new StatusCodeResult(500);
+            }
+        }
 
         [HttpGet]
         [Route("anime/{animeId}")]
@@ -112,9 +122,6 @@ namespace EindopdrachtBackEnd.Controllers
             }
         }
 
-
-
-
         // POST ONE ANIME
         
         [HttpPost]
@@ -123,6 +130,66 @@ namespace EindopdrachtBackEnd.Controllers
         {
             try{
                 return new OkObjectResult(await _animeService.AddAnime(anime));
+            }
+            catch(Exception ex){
+                return new StatusCodeResult(500);
+            }
+        }
+
+        // DELETE ONE STUDIO
+
+        [HttpDelete]
+        [Route("studio/{studioId}")]
+        public async Task<ActionResult<string>> DeleteStudio(int studioId)
+        {
+            try{
+                await _animeService.DeleteStudio(studioId);
+                return new OkObjectResult("The Studio has been deleted!");
+            }
+            catch(Exception ex){
+                return new StatusCodeResult(500);
+            }
+        }
+
+        // UPDATE ONE STUDIO
+
+        [HttpPut]
+        [Route("studio/{studioId}/{update}")]
+        public async Task<ActionResult<string>> UpdateStudio(int studioId, string update)
+        {
+            try{
+                return new OkObjectResult(await _animeService.UpdateStudio(studioId, update));
+
+            }
+            catch(Exception ex){
+                return new StatusCodeResult(500);
+            }
+        }
+
+        // DELETE ANIME WITH SPECIFIC NAME
+
+        [HttpDelete]
+        [Route("anime/{anime}")]
+        public async Task<ActionResult<string>> DeleteAnime(string anime)
+        {
+            try{
+                await _animeService.DeleteAnime(anime);
+                return new OkObjectResult("The Anime has been deleted!");
+            }
+            catch(Exception ex){
+                return new StatusCodeResult(500);
+            }
+        }
+
+        // UPDATE ANIME WITH A SPECIFIC NAME
+
+        [HttpPut]
+        [Route("anime/{anime}/{update}")]
+        public async Task<ActionResult<Anime>> UpdateAnime(string anime, string update)
+        {
+            try{
+                return new OkObjectResult(await _animeService.UpdateAnime(anime, update));
+
             }
             catch(Exception ex){
                 return new StatusCodeResult(500);
