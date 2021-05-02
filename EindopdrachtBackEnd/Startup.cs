@@ -48,6 +48,7 @@ namespace EindopdrachtBackEnd
                 options.Authority = "https://dev-xfqsdz8z.eu.auth0.com";
                 options.Audience = "http://animeAPI";
             });
+            // SWAGGER
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AnimeApi", Version = "v1" });
@@ -55,6 +56,7 @@ namespace EindopdrachtBackEnd
                 c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
             });
 
+            // VERSIONING
             services.AddApiVersioning(config =>
             {
                 config.DefaultApiVersion = new ApiVersion(1, 0);

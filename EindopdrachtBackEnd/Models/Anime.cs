@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace EindopdrachtBackEnd.Models
 {
@@ -14,6 +15,7 @@ namespace EindopdrachtBackEnd.Models
         public Studio Studio { get; set; }
         public int GenreId { get; set; }
         public Genre Genre { get; set; }
+
 
         public List<AnimeStreamingService> AnimeStreamingServices { get; set; }
     }

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EindopdrachtBackEnd.Migrations
 {
     [DbContext(typeof(AnimeContext))]
-    [Migration("20210429181130_init")]
+    [Migration("20210502130818_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,7 +26,7 @@ namespace EindopdrachtBackEnd.Migrations
                     b.Property<Guid>("AnimeId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
-                        .HasDefaultValue(new Guid("6b08bd42-e873-4bde-8382-1cee936264ba"));
+                        .HasDefaultValue(new Guid("ee5cb7db-c76f-4e1a-b3c5-1e3ea9c1c7e3"));
 
                     b.Property<int>("GenreId")
                         .HasColumnType("int");
@@ -377,7 +377,7 @@ namespace EindopdrachtBackEnd.Migrations
                         .IsRequired();
 
                     b.HasOne("EindopdrachtBackEnd.Models.StreamingService", "StreamingService")
-                        .WithMany()
+                        .WithMany("AnimeStreamingServices")
                         .HasForeignKey("StreamingServiceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -386,6 +386,11 @@ namespace EindopdrachtBackEnd.Migrations
                 });
 
             modelBuilder.Entity("EindopdrachtBackEnd.Models.Anime", b =>
+                {
+                    b.Navigation("AnimeStreamingServices");
+                });
+
+            modelBuilder.Entity("EindopdrachtBackEnd.Models.StreamingService", b =>
                 {
                     b.Navigation("AnimeStreamingServices");
                 });
