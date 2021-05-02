@@ -9,6 +9,9 @@ namespace EindopdrachtBackEnd.Services
 
     public class RecommendationService : IRecommendationService
     {
+
+        // GET RECOMMENDATION BASED ON SCORE
+
         public string Recommendation(decimal score)
         {
             var advice = "";

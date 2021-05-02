@@ -76,9 +76,25 @@ namespace EindOpdrachtBackend.Test
         [Fact]
         public async Task Get_One_Anime_Should_Return_Ok()
         {
-            var response = await Client.GetAsync("/api/anime/4e0958ef-84c6-4005-947b-08d90a1db170");
+            var response = await Client.GetAsync("/api/anime/name/One punch man Season 2");
             response.StatusCode.Should().Be(HttpStatusCode.OK);
         }
+
+        [Fact]
+        public async Task Get_One_StreamingService_Should_Return_Ok()
+        {
+            var response = await Client.GetAsync("/api/streamingservice/1");
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+        }
+
+        [Fact]
+        public async Task Get_One_Studio_Should_Return_Ok()
+        {
+            var response = await Client.GetAsync("/api/studio/1");
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+        }
+
+
 
         [Fact]
         public async Task Post_One_Anime_Should_Return_Ok()
@@ -116,12 +132,9 @@ namespace EindOpdrachtBackend.Test
         public async Task Update_One_Anime_Should_Return_Ok()
         {
             var update ="TEST ONE PUUUUNCH MAN!!!";
-            var response = await Client.PutAsync("/api/anime/OP!/One Punch Man!", 
+            var response = await Client.PutAsync("/api/anime/One punch man Season 2/One Punch Man!", 
             new StringContent(update));
             response.StatusCode.Should().Be(HttpStatusCode.OK);
-        
-        }
-    
-    
+        }    
     }
 }

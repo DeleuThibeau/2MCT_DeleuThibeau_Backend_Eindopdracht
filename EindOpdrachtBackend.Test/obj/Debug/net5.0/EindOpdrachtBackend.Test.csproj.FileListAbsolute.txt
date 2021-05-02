@@ -430,3 +430,6 @@ C:\Source\2MCT_DeleuThibeau_Backend_Eindopdracht\EindOpdrachtBackend.Test\bin\De
 c:\Source\2MCT_DeleuThibeau_Backend_Eindopdracht\EindOpdrachtBackend.Test\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.Versioning.dll
 C:\Source\2MCT_DeleuThibeau_Backend_Eindopdracht\EindOpdrachtBackend.Test\bin\Debug\net5.0\CoverletSourceRootsMapping
 C:\Source\2MCT_DeleuThibeau_Backend_Eindopdracht\EindOpdrachtBackend.Test\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Source\2MCT_DeleuThibeau_Backend_Eindopdracht\EindOpdrachtBackend.Test\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Source\2MCT_DeleuThibeau_Backend_Eindopdracht\EindOpdrachtBackend.Test\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Source\2MCT_DeleuThibeau_Backend_Eindopdracht\EindOpdrachtBackend.Test\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll

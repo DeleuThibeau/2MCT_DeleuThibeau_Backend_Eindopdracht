@@ -27,62 +27,136 @@ namespace EindopdrachtBackEnd.Repositories
             _context = context;
         }
 
+
+        // GET ALL ANIMES
+
         public async Task<List<Anime>> GetAnimes()
         {
-            return await _context.Animes.ToListAsync();
+            try
+            {
+                return await _context.Animes.ToListAsync();
+            }
+            catch (System.Exception ex)
+            {
+
+                throw ex;
+            }
+
+            
         }
 
-        public async Task<Anime> AddAnime(Anime anime)
-        {
-            await _context.Animes.AddAsync(anime);
-            await _context.SaveChangesAsync();
-            return anime;
-        }
+
+        // GET ONE ANIME BY ID
 
         public async Task<Anime> GetAnimeById(Guid animeId)
         {
-            return await _context.Animes.Where(s => s.AnimeId == animeId)
-            .Include(s => s.Genre)
-            .Include(s => s.Studio)
-            .Include(s => s.AnimeStreamingServices)
-            .ThenInclude(s => s.StreamingService).SingleOrDefaultAsync();
+            try
+            {
+                return await _context.Animes.Where(s => s.AnimeId == animeId)
+                    .Include(s => s.Genre)
+                    .Include(s => s.Studio)
+                    .Include(s => s.AnimeStreamingServices)
+                    .ThenInclude(s => s.StreamingService).SingleOrDefaultAsync();
+            }
+            catch (System.Exception ex)
+            {
+
+                throw ex;
+            }
+            
         }
 
+
+
+        // GET ONE ANIME BY NAME
 
         public async Task<Anime> GetAnimeByName(string animeName)
         {
-            return await _context.Animes.Where(s => s.Name == animeName)
-            .Include(s => s.Genre)
-            .Include(s => s.Studio)
-            .Include(s => s.AnimeStreamingServices)
-            .ThenInclude(s => s.StreamingService).SingleOrDefaultAsync();
+            try
+            {
+                return await _context.Animes.Where(s => s.Name == animeName)
+                    .Include(s => s.Genre)
+                    .Include(s => s.Studio)
+                    .Include(s => s.AnimeStreamingServices)
+                    .ThenInclude(s => s.StreamingService).SingleOrDefaultAsync();
+            }
+            catch (System.Exception ex)
+            {
+
+                throw ex;
+            }
         }
+
+
+
+        // ADD ONE ANIME (POST)
+
+        public async Task<Anime> AddAnime(Anime anime)
+        {
+            try
+            {
+                await _context.Animes.AddAsync(anime);
+                await _context.SaveChangesAsync();
+                return anime;
+            }
+            catch (System.Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+
+
+        // DELETE ONE ANIME BY NAME
 
         public async Task DeleteAnime(string name)
         {
-            var dep = _context.Animes.Where(o => o.Name == name).ToList();
 
-            foreach (Anime anime in dep)
+            try
             {
-                _context.Animes.Remove(anime);
+                var dep = _context.Animes.Where(o => o.Name == name).ToList();
 
+                foreach (Anime anime in dep)
+                {
+                    _context.Animes.Remove(anime);
+                }
+
+                await _context.SaveChangesAsync();
             }
-            await _context.SaveChangesAsync();
+            catch (System.Exception ex)
+            {
+
+                throw ex;
+            }
+            
         }
+
+
+
+        //UPDATE ONE ANIME BY NAME
 
         public async Task<List<Anime>> UpdateAnime(string name, string update)
         {
-            var animes = _context.Animes.Where(o => o.Name == name).ToList();
 
-            foreach (Anime anime in animes)
+            try
             {
-                anime.Name = update;
-            }
+                var animes = _context.Animes.Where(o => o.Name == name).ToList();
 
-            await _context.SaveChangesAsync();
+                foreach (Anime anime in animes)
+                {
+                    anime.Name = update;
+                }
+
+                await _context.SaveChangesAsync();
 
             return animes;
-        }
+            }
+            catch (System.Exception ex)
+            {
 
+                throw ex;
+            } 
+        }
     }
 }

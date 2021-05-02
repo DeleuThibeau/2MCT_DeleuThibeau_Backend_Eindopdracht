@@ -23,6 +23,8 @@ namespace EindopdrachtBackEnd.Repositories
             _context = context;
         }
 
+
+        // GET ALL GENRES
         public async Task<List<Genre>> GetGenres()
         {
             try
@@ -37,9 +39,21 @@ namespace EindopdrachtBackEnd.Repositories
 
         }
 
+
+        // GET ONE GENRE BY ID
+
         public async Task<Genre> GetGenre(int genreId)
         {
-            return await _context.Genres.Where(o => o.GenreId == genreId).SingleOrDefaultAsync();
+            
+            try
+            {
+                return await _context.Genres.Where(o => o.GenreId == genreId).SingleOrDefaultAsync();
+            }
+            catch (System.Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }

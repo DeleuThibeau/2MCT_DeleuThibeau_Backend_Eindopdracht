@@ -17,6 +17,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json; //to fix infinite looping during SELECT
 
 namespace EindopdrachtBackEnd
 {
@@ -39,7 +40,7 @@ namespace EindopdrachtBackEnd
             // CONTEXT
             services.AddDbContext<AnimeContext>();
             // CONTROLLERS
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             // AUTHENTICATION
             services.AddAuthentication(options => {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -51,6 +52,7 @@ namespace EindopdrachtBackEnd
             // SWAGGER
             services.AddSwaggerGen(c =>
             {
+                // ALLOWS MULTIPLE CONTROLLERS IN SWAGGER
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AnimeApi", Version = "v1" });
                 c.SwaggerDoc("v2", new OpenApiInfo { Title = "RecommendationApi", Version = "v1" });
                 c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
@@ -92,6 +94,7 @@ namespace EindopdrachtBackEnd
                 app.UseDeveloperExceptionPage();
             }
 
+            // SWAGGER
             app.UseSwagger();
             app.UseSwaggerUI(c => 
             {
@@ -103,6 +106,7 @@ namespace EindopdrachtBackEnd
 
             app.UseRouting();
 
+            //AUTH0
             app.UseAuthentication();
             app.UseAuthorization();
 

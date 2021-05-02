@@ -10,7 +10,6 @@ namespace EindopdrachtBackEnd.Models
         public string Name { get; set; }
         public bool IsLegal { get; set; }
 
-        [JsonIgnore]
         public List<AnimeStreamingService> AnimeStreamingServices { get; set; }
 
     }

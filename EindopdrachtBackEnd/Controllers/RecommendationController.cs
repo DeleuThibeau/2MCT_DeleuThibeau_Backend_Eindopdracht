@@ -25,7 +25,7 @@ namespace EindopdrachtBackEnd.Controllers
             _recommendationService = recommendationService;
         }
 
-        // GET RECOMMENDATION
+        // GET RECOMMENDATION WITH A SPECIFIC SCORE
 
         [HttpGet]
         [Route("Recommendation/{score}")]

@@ -19,7 +19,7 @@ namespace EindopdrachtBackEnd.Services
         Task<List<AllAnimeDTO>> GetAnimesV2();
         Task<GenreDTO> GetGenre(int genreId);
         Task<List<GenreDTO>> GetGenres();
-        Task<StreamingServiceDTO> GetStreamingService(int streamingServiceId);
+        Task<StreamingService> GetStreamingService(int streamingServiceId);
         Task<List<StreamingServiceDTO>> GetStreamingServices();
         Task<StudioDTO> GetStudio(int studioId);
         Task<List<StudioDTO>> GetStudios();
@@ -44,7 +44,92 @@ namespace EindopdrachtBackEnd.Services
             _streamingServiceRepository = streamingServiceRepository;
         }
 
-        // GET ANIME
+
+        // GET ALL
+        // ======================================================================================================================
+
+        // GET ALL ANIME V2 => VERSIONING
+
+        public async Task<List<AllAnimeDTO>> GetAnimesV2()
+        {
+            try
+            {
+                return _mapper.Map<List<AllAnimeDTO>>(await _animeRepository.GetAnimes());
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        // GET ALL ANIME V1 => VERSIONING
+
+        public async Task<List<AnimeDTO>> GetAnimesV1()
+        {
+            try
+            {
+                return _mapper.Map<List<AnimeDTO>>(await _animeRepository.GetAnimes());
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        // GET ALL GENRES 
+
+        public async Task<List<GenreDTO>> GetGenres()
+        {
+            try
+            {
+                return _mapper.Map<List<GenreDTO>>(await _genreRepository.GetGenres());
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        // GET ALL STUDIOS
+
+        public async Task<List<StudioDTO>> GetStudios()
+        {
+            try
+            {
+                return _mapper.Map<List<StudioDTO>>(await _studioRepository.GetStudios());
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        // GET ALL STREAMING_SERVICES
+
+        public async Task<List<StreamingServiceDTO>> GetStreamingServices()
+        {
+            try
+            {
+                return _mapper.Map<List<StreamingServiceDTO>>(await _streamingServiceRepository.GetStreamingServices());
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+
+
+        // GET ONE
+        // ======================================================================================================================
+
+        // GET ONE ANIME BY ID
+
         public async Task<Anime> GetAnimeById(Guid animeId)
         {
             try
@@ -53,10 +138,12 @@ namespace EindopdrachtBackEnd.Services
             }
             catch (System.Exception ex)
             {
-
                 throw ex;
             }
         }
+
+
+        // GET ONE ANIME BY NAME
 
         public async Task<Anime> GetAnimeByName(string animeName)
         {
@@ -66,55 +153,63 @@ namespace EindopdrachtBackEnd.Services
             }
             catch (System.Exception ex)
             {
-
                 throw ex;
             }
         }
 
-        public async Task<List<AllAnimeDTO>> GetAnimesV2()
-        {
-            return _mapper.Map<List<AllAnimeDTO>>(await _animeRepository.GetAnimes());
-        }
 
-        public async Task<List<AnimeDTO>> GetAnimesV1()
-        {
-            return _mapper.Map<List<AnimeDTO>>(await _animeRepository.GetAnimes());
-        }
+        // GET ONE GENRE BY ID
 
-        // GET GENRES
         public async Task<GenreDTO> GetGenre(int genreId)
         {
-            return _mapper.Map<GenreDTO>(await _genreRepository.GetGenre(genreId));
+            try
+            {
+                return _mapper.Map<GenreDTO>(await _genreRepository.GetGenre(genreId));
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
         }
 
-        public async Task<List<GenreDTO>> GetGenres()
-        {
-            return _mapper.Map<List<GenreDTO>>(await _genreRepository.GetGenres());
-        }
 
-        // GET STUDIOS
+        // GET ONE STUDIO BY ID
+
         public async Task<StudioDTO> GetStudio(int studioId)
         {
-            return _mapper.Map<StudioDTO>(await _studioRepository.GetStudio(studioId));
+            try
+            {
+                return _mapper.Map<StudioDTO>(await _studioRepository.GetStudio(studioId));
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
         }
 
-        public async Task<List<StudioDTO>> GetStudios()
+
+        // GET ONE STREAMING_SERVICE BY ID
+
+        public async Task<StreamingService> GetStreamingService(int streamingServiceId)
         {
-            return _mapper.Map<List<StudioDTO>>(await _studioRepository.GetStudios());
+            try
+            {
+                return await _streamingServiceRepository.GetStreamingService(streamingServiceId);
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
         }
 
-        // GET STREAMINGSERVICES
-        public async Task<StreamingServiceDTO> GetStreamingService(int streamingServiceId)
-        {
-            return _mapper.Map<StreamingServiceDTO>(await _streamingServiceRepository.GetStreamingService(streamingServiceId));
-        }
 
-        public async Task<List<StreamingServiceDTO>> GetStreamingServices()
-        {
-            return _mapper.Map<List<StreamingServiceDTO>>(await _streamingServiceRepository.GetStreamingServices());
-        }
 
-        // ADD ANIME
+
+        // DELETE/POST/UPDATE
+        // ======================================================================================================================
+
+        // ADD/POST ANIME WITH OBJECT
+
         public async Task<AnimeDTO> AddAnime(AnimeDTO anime)
         {
             try
@@ -138,33 +233,9 @@ namespace EindopdrachtBackEnd.Services
                 throw ex;
             }
         }
+        
 
-
-        // DELETE STUDIO
-
-        public async Task DeleteStudio(int studioId)
-        {
-            try
-            {
-                await _studioRepository.DeleteStudio(studioId);
-            }
-            catch (System.Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public async Task<Studio> UpdateStudio(int studioId, string update)
-        {
-            try
-            {
-                return await _studioRepository.UpdateStudio(studioId, update);
-            }
-            catch (System.Exception ex)
-            {
-                throw ex;
-            }
-        }
+        //DELETE ANIME BY NAME
 
         public async Task<string> DeleteAnime(string name)
         {
@@ -184,6 +255,9 @@ namespace EindopdrachtBackEnd.Services
             }
         }
 
+
+        // UPDATE ANIME BY NAME
+
         public async Task<List<AllAnimeDTO>> UpdateAnime(string anime, string update)
         {
             try
@@ -192,7 +266,36 @@ namespace EindopdrachtBackEnd.Services
             }
             catch (System.Exception ex)
             {
+                throw ex;
+            }
+        }
 
+
+        // DELETE STUDIO BY ID
+
+        public async Task DeleteStudio(int studioId)
+        {
+            try
+            {
+                await _studioRepository.DeleteStudio(studioId);
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        // UPDATE STUDIO BY ID
+
+        public async Task<Studio> UpdateStudio(int studioId, string update)
+        {
+            try
+            {
+                return await _studioRepository.UpdateStudio(studioId, update);
+            }
+            catch (System.Exception ex)
+            {
                 throw ex;
             }
         }

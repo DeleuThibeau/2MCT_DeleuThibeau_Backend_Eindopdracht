@@ -23,6 +23,9 @@ namespace EindopdrachtBackEnd.Repositories
             _context = context;
         }
 
+
+        // GET ALL STREAMING_SERVICES
+
         public async Task<List<StreamingService>> GetStreamingServices()
         {
             try
@@ -37,9 +40,20 @@ namespace EindopdrachtBackEnd.Repositories
 
         }
 
+
+        // GET ONE STREAMING_SERVICE BY ID
+
         public async Task<StreamingService> GetStreamingService(int streamingServiceId)
         {
-            return await _context.StreamingServices.Where(o => o.StreamingServiceId == streamingServiceId).SingleOrDefaultAsync();
+            try
+            {
+                return await _context.StreamingServices.Where(o => o.StreamingServiceId == streamingServiceId).Include(s => s.AnimeStreamingServices).ThenInclude(s => s.Anime).SingleOrDefaultAsync();
+            }
+            catch (System.Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }

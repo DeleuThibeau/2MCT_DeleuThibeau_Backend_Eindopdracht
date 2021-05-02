@@ -10,6 +10,7 @@ using Microsoft.Extensions.Options;
 
 namespace EindopdrachtBackEnd.Data
 {
+    // => INTERFACE => EASY TO IMPLEMENT ELSEWHERE (REPOS)
     public interface IAnimeContext
     {
         DbSet<Anime> Animes { get; set; }
@@ -20,6 +21,7 @@ namespace EindopdrachtBackEnd.Data
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 
+    // DB CONTEXT => DB CREATION 
     public class AnimeContext : DbContext, IAnimeContext
     {
         public DbSet<Anime> Animes { get; set; }
@@ -32,20 +34,37 @@ namespace EindopdrachtBackEnd.Data
 
         public AnimeContext(DbContextOptions<AnimeContext> options, IOptions<ConnectionStrings> connectionstrings) : base(options)
         {
+            // DECLARE CONNECTIONSTRING FORM CONFIGURATION
             _connectionstrings = connectionstrings.Value;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
+            // LOGGER / SQL ENABLING
             options.UseLoggerFactory(LoggerFactory.Create(builder => builder.AddDebug()));
             options.UseSqlServer(_connectionstrings.SQL);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // TUSSENTABEL
             modelBuilder.Entity<AnimeStreamingService>()
                    .HasKey(cs => new { cs.AnimeId, cs.StreamingServiceId });
 
+            // WEDERZIJDSE VEEL-VEEL RELATIE MOGELIJK MAKEN       
+            modelBuilder.Entity<Anime>()
+                .HasMany(a => a.AnimeStreamingServices)
+                .WithOne(at => at.Anime)
+                .HasForeignKey(at => at.AnimeId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<StreamingService>()
+                .HasMany(s => s.AnimeStreamingServices)
+                .WithOne(st => st.StreamingService)
+                .HasForeignKey(st => st.StreamingServiceId)
+                .OnDelete(DeleteBehavior.Cascade);
+            
+            // SEEDING
             modelBuilder.Entity<Genre>().HasData(new Genre() { GenreId = 1, Name = "Action", Description = "An action story is similar to adventure, and the protagonist usually takes a risky turn, which leads to desperate situations (including explosions, fight scenes, daring escapes, etc.). Action and adventure are usually categorized together (sometimes even as 'action-adventure') because they have much in common, and many stories fall under both genres simultaneously (for instance, the James Bond series can be classified as both)." });
             modelBuilder.Entity<Genre>().HasData(new Genre() { GenreId = 2, Name = "Drama", Description = "Drama is a mode of fictional representation through dialogue and performance. It is one of the literary genres, which is an imitation of some action. Drama is also a type of a play written for theater, television, radio, and film." });
             modelBuilder.Entity<Genre>().HasData(new Genre() { GenreId = 3, Name = "Comedy", Description = "Comedy is a story that tells about a series of funny, or comical events, intended to make the audience laugh. It is a very open genre, and thus crosses over with many other genres on a frequent basics." });
@@ -89,6 +108,7 @@ namespace EindopdrachtBackEnd.Data
             modelBuilder.Entity<StreamingService>().HasData(new StreamingService() { StreamingServiceId = 6, Name = "KissAnime", IsLegal = false });
             modelBuilder.Entity<StreamingService>().HasData(new StreamingService() { StreamingServiceId = 7, Name = "GogoAnime", IsLegal = false });
 
+            // GENERATE NEW ID WHEN ANIME OBJECT IS ADDED
             modelBuilder.Entity<Anime>().Property(v => v.AnimeId).HasDefaultValue(Guid.NewGuid());
 
         }

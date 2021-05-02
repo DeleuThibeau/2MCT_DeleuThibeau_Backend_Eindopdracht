@@ -25,6 +25,9 @@ namespace EindopdrachtBackEnd.Repositories
             _context = context;
         }
 
+
+        // GET ALL STUDIOS
+
         public async Task<List<Studio>> GetStudios()
         {
             try
@@ -36,28 +39,60 @@ namespace EindopdrachtBackEnd.Repositories
 
                 throw ex;
             }
-
         }
+
+
+        // GET ONE STUDIO BY ID
 
         public async Task<Studio> GetStudio(int studioId)
         {
-            return await _context.Studios.Where(o => o.StudioId == studioId).SingleOrDefaultAsync();
+            try
+            {
+                return await _context.Studios.Where(o => o.StudioId == studioId).SingleOrDefaultAsync();
+            }
+            catch (System.Exception ex)
+            {
+
+                throw ex;
+            }
         }
+
+
+        // REMOVE ONE STUDIO BY ID
 
         public async Task DeleteStudio(int studio)
         {
-            var dep = _context.Studios.Where(o => o.StudioId == studio).First();
-            _context.Studios.Remove(dep);
-            await _context.SaveChangesAsync();
+            try
+            {
+                var deletedObject = _context.Studios.Where(o => o.StudioId == studio).First();
+                _context.Studios.Remove(deletedObject);
+                await _context.SaveChangesAsync();
+            }
+            catch (System.Exception ex)
+            {
+
+                throw ex;
+            }
         }
+
+
+        // UPDATE ONE STUDIO BY ID
 
         public async Task<Studio> UpdateStudio(int studioId, string update)
         {
-            var dep = _context.Studios.Where(o => o.StudioId == studioId).First();
-            dep.Name = update;
-            await _context.SaveChangesAsync();
+            try
+            {
+                var updateItem = _context.Studios.Where(o => o.StudioId == studioId).First();
+                updateItem.Name = update;
+                await _context.SaveChangesAsync();
+                return updateItem;
+            }
+            catch (System.Exception ex)
+            {
 
-            return dep;
+                throw ex;
+            }
+            
         }
     }
 }
