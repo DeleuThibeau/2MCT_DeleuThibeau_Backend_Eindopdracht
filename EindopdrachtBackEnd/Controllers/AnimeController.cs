@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace EindopdrachtBackEnd.Controllers
 {
-    // [Authorize]
+    [Authorize]
     [ApiController]
     [Route("api")]
     [ApiVersion("1.0")]
@@ -76,6 +76,7 @@ namespace EindopdrachtBackEnd.Controllers
 
 
         // GET ALL ANIME V1 (PURE) => VERSIONING
+        
         [HttpGet]
         [AllowAnonymous]
         [Route("animes")]

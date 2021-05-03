@@ -10,6 +10,8 @@ namespace EindopdrachtBackEnd.Models
         public string Name { get; set; }
         public bool IsLegal { get; set; }
 
+        public DateTime YearOfRelease { get; set; }
+
         public List<AnimeStreamingService> AnimeStreamingServices { get; set; }
 
     }

@@ -34,5 +34,15 @@ namespace EindopdrachtBackEnd.Services
 
             return advice;
         }
+
+        public decimal CalcScore(decimal score)
+        {
+            score = 0;
+            
+            decimal result = score * score;
+            return result;
+        }
+
+
     }
 }

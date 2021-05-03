@@ -8,5 +8,6 @@ namespace EindopdrachtBackEnd.DTO
         public int StreamingServiceId { get; set; }
         public string Name { get; set; }
         public bool IsLegal { get; set; }
+        public DateTime YearOfRelease { get; set; }
     }
 }

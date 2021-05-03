@@ -76,7 +76,7 @@ namespace EindOpdrachtBackend.Test
         [Fact]
         public async Task Get_One_Anime_Should_Return_Ok()
         {
-            var response = await Client.GetAsync("/api/anime/name/One punch man Season 2");
+            var response = await Client.GetAsync("/api/anime/name/One punch man!");
             response.StatusCode.Should().Be(HttpStatusCode.OK);
         }
 
@@ -95,6 +95,10 @@ namespace EindOpdrachtBackend.Test
         }
 
 
+        //=======================================================================================================================================================================================================================
+
+        // IF YOU WANT TO TEST THE TESTS UNDERNEATH, YOU'LL HAVE TO UNAUTHORIZE THE ANIME CONTROLLER SINCE THESE TESTS ARE BEHIND A AUTH0 AUTHENTICATION. THE TESTS ABOVE ARE ACCESIBLE FOR EVERYONE.
+        // SO IF YOU ONLY WANT TO TEST THE TESTS ABOVE, YOU CAN PUT THE TESTS UNDERNEATH IN COMMENT WITH "//"
 
         [Fact]
         public async Task Post_One_Anime_Should_Return_Ok()
